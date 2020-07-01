@@ -1,23 +1,23 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoheadlines";
-//mongodb connect
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-   useFindAndModify: false,
+
+// //mongodb connect
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://workout', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//    useFindAndModify: false,
    
-});
-// Connection URL
-const url = 'mongodb://localhost:27017';
+// });
+// // Connection URL
+// const url = 'mongodb://localhost:27017';
  
-// Database Name
-const dbName = 'workout';
-mongoose.connection.once('open',function(){
-    console.log('Mongo connected')
-}).on('err',function(){
-    console.log('mongo error',err)
-})
+// // Database Name
+// const dbName = 'workout';
+// mongoose.connection.once('open',function(){
+//     console.log('Mongo connected')
+// }).on('err',function(){
+//     console.log('mongo error',err)
+// })
 //build param for database
 const workoutSchema = new schema(
 	{
