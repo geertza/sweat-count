@@ -1,7 +1,23 @@
 const mongoose = require('mongoose')
 const schema = mongoose.Schema;
-
-const fitRecord = new schema(
+//mongodb connect
+mongoose.connect('mongodb://localhost/workout', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+   useFindAndModify: false,
+});
+// Connection URL
+const url = 'mongodb://localhost:27017';
+ 
+// Database Name
+const dbName = 'workout';
+mongoose.connection.once('open',function(){
+    console.log('Mongo connected')
+}).on('err',function(){
+    console.log('mongo error',err)
+})
+//build param for database
+const workoutSchema = new schema(
 	{
 		day: {
 			type: Date,
@@ -21,7 +37,6 @@ const fitRecord = new schema(
 				},
 				duration: {
 					type: Number,
-					required: "how many minutes",
 				},
 				weight: {
 					type: Number,
@@ -45,8 +60,8 @@ const fitRecord = new schema(
 		},
 	}
 );
-
-const workout = mongoose.model('workout',fitRecord);
+//export schema and activation for database
+const workout = mongoose.model('workout',workoutSchema);
 
 module.exports = workout
          
