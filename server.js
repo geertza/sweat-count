@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const express = require('express')
+require('dotenv').config()
 // const path = require('path')
 const app = express()
 var bodyParser= require("body-parser")
@@ -23,7 +24,7 @@ app.use(require("./controller/control"));
 app.listen(PORT,function(){
     console.log('server on port 8080...');
 })
-
+const MONGODB_URI = 'mongodb://heroku_hjl6ttd4:as5rd74f8bvcq70heitnka62o9@ds143604.mlab.com:43604/heroku_hjl6ttd4'
 //mongodb connect
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
